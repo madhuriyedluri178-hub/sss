@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Berachah Sunday School Songs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-brown: #6D4C41;
+            --gold-accent: #FFD700;
+            --glass-white: rgba(255, 255, 255, 0.85);
+            --card-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: url('https://images.unsplash.com/photo-1502082553048-f009c37129b9') fixed center/cover;
+            color: #333;
+        }
+        .hidden { display: none !important; }
+
+        /* HEADER */
+        .header {
+            height: 140px;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            position: relative;
+            background:inherit;
+            overflow: hidden;
+            border-bottom: 2px solid var(--gold-accent);
+        }
+
+        .header::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: var(--card-shadow);
+             backdrop-filter: blur(10px);
+        }
+
+        .header-content {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            z-index: 1;
+        
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .header h2 {
+            margin: 0;
+            font-size: clamp(1.8rem, 5vw, 3.5rem);
+            color: var(--primary-brown);
+            text-transform: uppercase;
+            -webkit-text-stroke: 1px white;
+            text-shadow: 2px 2px 6px var(--gold-accent);
+        }
+
+        .header p {
+            font-size: 1em;
+            margin: 0;
+            color: hsl(0, 3%, 94%);
+            letter-spacing: 1px;
+            margin-top: 3px;
+            font-family: Forte;
+            -webkit-text-stroke: 1px black;
+        }
+        /* MAIN CONTAINER */
+        .container {
+            max-width: 1100px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        /* MEMORY CARD */
+        .memory-card {
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 6px 20px yellow;
+            margin-bottom: 40px;
+            border: 1px solid white;
+        }
+
+        .memory-card p { font-size: 1.3rem; font-weight: 500; margin: 5px 0; }
+        .verse-ref { color: #A0522D; font-style: italic; font-weight: 600; }
+
+        /* THEMES GRID */
+        .themes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .theme-card {
+            height: 160px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 1.5rem;
+            cursor: pointer;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+            transition: 0.4s;
+            box-shadow: 0 6px 20px gold;
+        }
+
+        .theme-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.45);
+            transition: 0.3s;
+        }
+
+        .theme-card span { position: relative; z-index: 1; text-align: center; padding: 10px; }
+
+        .theme-card:hover { transform: translateY(-8px); }
+        .theme-card:hover::before { background: rgba(0,0,0,0.2); }
+
+        /* SONG LIST & LYRICS VIEW */
+        .content-card {
+            background: white;
+            padding: 35px;
+            border-radius: 25px;
+            min-height: 450px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .back-btn {
+            background: var(--primary-brown);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-bottom: 25px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .song-item {
+            padding: 18px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: 0.3s;
+            color: #444;
+        }
+
+        .song-item:hover { background: #FFFDE7; color: #b08d00; padding-left: 25px; }
+
+        .lyrics-text {
+            white-space: pre-line;
+            line-height: 2;
+            font-size: 1.25rem;
+            text-align: center;
+            color: #333;
+        }
+
+        /* FOOTER */
+        footer {
+            background: rgba(109, 76, 65, 0.95);
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+            margin-top: 60px;
+            border-top: 5px solid var(--gold-accent);
+        }
+
+        .footer-links a { color: var(--gold-accent); text-decoration: none; margin: 0 10px; }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <div class="header-content" onclick="showPage('home-page')">
+        <img src="sss.jpg"  class="logo">
+        <h2>Sunday School Songs</h2><br>
+        <p>|SING |PRAISE| WORSHIP|</p>
+    </div>
+</header>
+
+<main class="container">
+    <div id="home-page">
+        <section class="memory-card">
+            <p>"Thy statutes have been my <strong>Songs</strong> in the house of my pilgrimage."</p>
+            <span class="verse-ref">-- Psalms 119 : 54</span>
+        </section>
+        <div id="themes-grid" class="themes-grid">
+            </div>
+    </div>
+
+    <div id="list-page" class="hidden">
+        <button class="back-btn" onclick="showPage('home-page')">← Back to Themes</button>
+        <div class="content-card">
+            <h2 id="category-title" style="color: var(--primary-brown); border-bottom: 2px solid var(--gold-accent); padding-bottom: 10px;"></h2>
+            <div id="songs-container"></div>
+        </div>
+    </div>
+
+    <div id="lyrics-page" class="hidden">
+        <button class="back-btn" onclick="showPage('list-page')">← Back to List</button>
+        <div class="content-card">
+            <h2 id="song-title" style="text-align: center; color: var(--primary-brown); margin-bottom: 30px;"></h2>
+            <div id="lyrics-content" class="lyrics-text"></div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <h3>Berachah Sunday School</h3>
+        <p>Bringing children closer to God through music.</p>
+        <p>📍 Mutlur, Guntur, Andhra Pradesh, India</p>
+        <p>📞 7893678354 | ✉️ info@sundayschool.com</p>
+        <div class="copyright" style="margin-top: 20px; opacity: 0.8;">
+            &copy; 2026 Designed with ❤️ for Ministry.
+        </div>
+    </div>
+</footer>
+
+<script>
+    // --- 10 THEMES DATABASE ---
+    const songsDatabase = [
+        { 
+            title: "Action Songs", 
+            img: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4",
+            songs: [
+                { name: "Walking with Jesus", text: "Walking with Jesus,\nWalking everyday,\nWalking all the way!\n\nWalking with Jesus,\nWalking in the light,\nWalking in His way!" },
+                { name: "I'm in the Lord's Army", text: "I may never march in the infantry,\nRide in the cavalry,\nShoot the artillery.\nI may never fly o'er the enemy,\nBut I'm in the Lord's army!" }
+            ]
+        },
+        { 
+            title: "Worship Songs", 
+            img: "https://images.unsplash.com/photo-1504052434569-70ad5836ab65",
+            songs: [
+                { name: "Give Thanks", text: "Give thanks with a grateful heart,\nGive thanks to the Holy One,\nGive thanks because He's given Jesus Christ, His Son." }
+            ]
+        },
+        { 
+            title: "Memory Verse Songs", 
+            img: "https://images.unsplash.com/photo-1507842217343-583bb7270b66",
+            songs: [] 
+        },
+        { 
+            title: "Kids Songs", 
+            img: "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9",
+            songs: [] 
+        },
+        { 
+            title: "Christmas Songs", 
+            img: "https://wallpapercave.com/wp/AUblcv9.jpg",
+            songs: [] 
+        },
+        { 
+            title: "Easter Songs", 
+            img: "https://images.unsplash.com/photo-1523438885200-e635ba2c371e",
+            songs: [] 
+        },
+        { 
+            title: "Prayer Songs", 
+            img: "https://tse3.mm.bing.net/th?id=OIP.jqNIRFWMeg_KkmwezlY7PwHaEO",
+            songs: [] 
+        },
+        { 
+            title: "Telugu Christian Songs", 
+            img: "https://tse1.mm.bing.net/th?id=OIP.XO3HCgG57ZNUlvQWQe6r-wHaEJ",
+            songs: [
+                { name: "Chinna Chinna Maatalatho", text: "చిన్న చిన్న మాటలతో నేను నిన్ను స్తుతించెదన్...\nయేసయ్యా... నా యేసయ్యా...\n\nచిన్ని చిన్ని అడుగులతో నీ దరికి చేరెదన్...\nయేసయ్యా... నా యేసయ్యా..." }
+            ]
+        },
+        { 
+            title: "Learning Songs", 
+            img: "https://images.unsplash.com/photo-1588072432836-e10032774350",
+            songs: [] 
+        },
+        { 
+            title: "Festival Songs", 
+            img: "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92",
+            songs: [] 
+        }
+    ];
+
+    // --- NAVIGATION LOGIC ---
+    function showPage(pageId) {
+        document.getElementById('home-page').classList.add('hidden');
+        document.getElementById('list-page').classList.add('hidden');
+        document.getElementById('lyrics-page').classList.add('hidden');
+        
+        document.getElementById(pageId).classList.remove('hidden');
+        window.scrollTo(0,0);
+    }
+
+    // 1. Load Themes
+    function initThemes() {
+        const grid = document.getElementById('themes-grid');
+        songsDatabase.forEach((item, index) => {
+            const card = document.createElement('div');
+            card.className = 'theme-card';
+            card.style.backgroundImage = `url('${item.img}')`;
+            card.innerHTML = `<span>${item.title}</span>`;
+            card.onclick = () => openCategory(index);
+            grid.appendChild(card);
+        });
+    }
+
+    // 2. Open Selected Category
+    function openCategory(index) {
+        const category = songsDatabase[index];
+        document.getElementById('category-title').innerText = category.title;
+        
+        const container = document.getElementById('songs-container');
+        container.innerHTML = ""; 
+
+        if(category.songs.length === 0) {
+            container.innerHTML = "<p style='text-align:center; color:gray; padding:20px;'>ఈ కేటగిరీలో పాటలు త్వరలో వస్తాయి (Coming Soon)...</p>";
+        } else {
+            category.songs.forEach(song => {
+                const sDiv = document.createElement('div');
+                sDiv.className = 'song-item';
+                sDiv.innerText = song.name;
+                sDiv.onclick = () => openLyrics(song);
+                container.appendChild(sDiv);
+            });
+        }
+        showPage('list-page');
+    }
+
+    // 3. Open Lyrics
+    function openLyrics(song) {
+        document.getElementById('song-title').innerText = song.name;
+        document.getElementById('lyrics-content').innerText = song.text;
+        showPage('lyrics-page');
+    }
+
+    // Run on startup
+    initThemes();
+</script>
+
+</body>
+</html>
